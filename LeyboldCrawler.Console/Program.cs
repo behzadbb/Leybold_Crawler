@@ -22,12 +22,15 @@ namespace LeyboldCrawler.Command
         static async Task Main(string[] args)
         {
             w("Start");
+            wl("Enter Count: ");
+            int take = int.Parse(Console.ReadLine());
             //string xml = await XmlTools.LoadSitemap();
             //Urlset urls = XmlTools.getUrls(xml);
             //string[] url = urls.urls.Where(x => x.loc.Contains("/products/")).Select(x => x.loc).ToArray();
-            string[] url = XmlTools.GetUrls.Where(x => x.Contains("/products/") && x.Contains("/pumps/") && x.Length > x.IndexOf("/pumps/") + 7).Take(3).Select(x => x).ToArray();
+            string[] url = XmlTools.GetUrls.Where(x => x.Contains("/products/") && x.Contains("/pumps/") && x.Length > x.IndexOf("/pumps/") + 7).Take(take).Select(x => x).ToArray();
             List<Product> products = new List<Product>();
             //System.IO.File.WriteAllLines(@"C:\Users\Behzad\Desktop\txt_lebold\Leybold.txt", url);
+            wl("Loading ");
             foreach (var item in url)
             {
                 int s = item.IndexOf("/pumps/");
@@ -37,11 +40,17 @@ namespace LeyboldCrawler.Command
                     {
                         var pr = leybold.GetProduct(item);
                         products.Add(pr);
+                        wl("|");
                     }
                 }
             }
             //LoadSitemap("https://www.leyboldproducts.com/products/vacuum-pump-systems/fore-vacuum-pump-systems/ruta-pumpsystems-with/1507/ruta-wau-1001/sv-200/a");
             var j = JsonConvert.SerializeObject(products);
+            w("\n");
+            w(j);
+            w("\n");
+            w("\n");
+            w("finish");
             Console.ReadKey();
         }
         static void LoadSitemap(string uri)
@@ -81,6 +90,10 @@ namespace LeyboldCrawler.Command
         static async void w(string s)
         {
             Console.WriteLine(s);
+        }
+        static async void wl(string s)
+        {
+            Console.Write(s);
         }
     }
 }
