@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>LeyboldCrawler.Commond</RootNamespace>
+    <AssemblyName>LeyboldCrawler.Command</AssemblyName>
+    <StartupObject>LeyboldCrawler.Command.Program</StartupObject>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="75.0.3770.90" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LeyboldCrawler.App\LeyboldCrawler.App.csproj" />
+    <ProjectReference Include="..\LeyboldCrawler.Model\LeyboldCrawler.Model.csproj" />
+  </ItemGroup>
+
+</Project>
