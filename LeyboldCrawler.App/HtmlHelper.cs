@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LeyboldCrawler.App
 {
@@ -32,6 +33,11 @@ namespace LeyboldCrawler.App
             {
                 return new HtmlDocument();
             }
+        }
+
+        public string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
 
 
