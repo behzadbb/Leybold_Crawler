@@ -51,7 +51,7 @@ namespace LeyboldCrawler.App
             #region Title Buyer
             product.TitleEn = divDetails.SelectSingleNode("//div[@class='product--buybox block']//header[@class='product--header']//div[@class='product--info']//h1")
                 .InnerText.Replace("\n", " ").Replace("  ", " ").Trim();
-            product.Title = "پمپ وکیوم " + translate.Translate(new InputTranslate { Input = product.TitleEn }).Result;
+            product.Title = "پمپ وکیوم " + product.TitleEn;
             product.Property = divDetails.SelectSingleNode("//div[@class='product--buybox block']//header[@class='product--header']//div[@class='product--info']//div[@class='product--properties']").InnerHtml.Replace("\n", "").Trim();
             #endregion
 

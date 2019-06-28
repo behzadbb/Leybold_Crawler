@@ -104,15 +104,18 @@ namespace LeyboldCrawler.Command
         }
         private static void wp()
         {
-            string url = XmlTools.GetUrls.Where(x => x.Contains("/products/") && x.Contains("/pumps/") && x.Length > x.IndexOf("/pumps/") + 7).Select(x => x).Skip(10).FirstOrDefault();
-            LProduct product = new LProduct();
-            using (LeyboldHelper leybold = new LeyboldHelper())
+            string[] urla = XmlTools.GetUrls.Where(x => x.Contains("/products/") && x.Contains("/pumps/") && x.Length > x.IndexOf("/pumps/") + 7).Select(x => x).Skip(14).Take(3).ToArray();
+            foreach (string url in urla)
             {
-                product = leybold.GetProduct(url);
-            }
-            using (WooCommerce woo=new WooCommerce())
-            {
-                woo.createPost(product);
+                LProduct product = new LProduct();
+                using (LeyboldHelper leybold = new LeyboldHelper())
+                {
+                    product = leybold.GetProduct(url);
+                }
+                using (WooCommerce woo = new WooCommerce())
+                {
+                    woo.createPost(product);
+                }
             }
         }
         private static void translate()

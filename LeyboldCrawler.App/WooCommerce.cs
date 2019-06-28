@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using RestSharp;
 using LeyboldCrawler.Model;
 using System.Linq;
-using WooCommerceNET.WooCommerce.v3;
 using WooCommerceNET.Base;
 
 
@@ -65,11 +64,11 @@ namespace LeyboldCrawler.App
             {
                 name = lProduct.Title,
                 images = productImages,
-                description = lProduct.Html,
+                description = string.IsNullOrWhiteSpace(lProduct.Html) ? string.Empty : $"<div>{lProduct.Html}</div><br /><div style='direction:ltr !important;text-align: left;'><h2>Description</h2>{lProduct.HtmlEn}</div>",
                 price = 0,
                 tags = productTags,
-                date_created = DateTime.Now.AddDays(-7),
-                date_on_sale_from = DateTime.Now.AddDays(-5),
+                date_created = DateTime.Now.AddHours(-5),
+                date_on_sale_from = DateTime.Now.AddHours(-3),
                 categories = new List<ProductCategoryLine>() { new ProductCategoryLine { name = lProduct.Category } }
             };
             await wc.Product.Add(p);
