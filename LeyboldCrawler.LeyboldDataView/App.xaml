@@ -1,0 +1,9 @@
+﻿<Application x:Class="LeyboldCrawler.LeyboldDataView.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LeyboldCrawler.LeyboldDataView"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
